@@ -19,7 +19,8 @@ use App\Http\Controllers\Dist\{
     ColaboradoresController,
     MotivoController,
     SubmotivoController,
-    PerfilController
+    PerfilController,
+    ReporteController
 };
 
 
@@ -65,6 +66,8 @@ Route::middleware('guest')->group(function () {
 
 
         Route::get('dashboard', [DashboardController::class, 'Dashboard']) ->name('Dashboard');  
+
+        Route::get('dist/reporte/atencion', [ReporteController::class, 'Atencion']) ->name('Atencion');  
 
         Route::get('dist/dashboard', [DashboardController::class, 'Index']) ->name('Index');  
         Route::get('dist/dashboard/listado', [DashboardController::class, 'PostIndex']) ->name('PostIndex');  

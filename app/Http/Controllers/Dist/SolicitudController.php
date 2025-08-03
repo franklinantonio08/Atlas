@@ -22,10 +22,7 @@ use Excel;
 
 class SolicitudController extends Controller
 {
-    //
-
-
-
+  
     private $request;
     private $common;
 
@@ -34,97 +31,95 @@ class SolicitudController extends Controller
     }
 
     public function Index(){
-        
-     
 
-        return \view('dist/solicitud/index');
+        return view('dist.solicitud.index');
 
     }
 
     public function PostIndex(){
 
-                //return $colaboradoresId;
-        
-                $request = $this->request->all();
-        
-                //return $request;
-                $columnsOrder = isset($request['order'][0]['column']) ? $request['order'][0]['column'] : '0';
-                $orderBy=isset($request['columns'][$columnsOrder]['data']) ? $request['columns'][$columnsOrder]['data'] : 'id';
-                $order = isset($request['order'][0]['dir']) ? $request['order'][0]['dir'] : 'ASC';
-                $length = isset($request['length']) ? $request['length'] : '15';
-        
-                $currentPage = $request['currentPage'];  
-                Paginator::currentPageResolver(function() use ($currentPage){
-                    return $currentPage;
-                });
-        
-                $query = DB::table('solicitud')
-                ->leftjoin('departamento', 'departamento.id', '=', 'solicitud.departamentoId')
-                ->leftjoin('tipoAtencion', 'tipoAtencion.id', '=', 'solicitud.idTipoAtencion');
+        //return $colaboradoresId;
 
-                // Agrega la variable de usuario para simular ROW_NUMBER()
-                $query->select([
-                        DB::raw('@row_num := @row_num + 1 AS row_number'),
-                        'solicitud.*',
-                        'departamento.nombre',
-                        'tipoAtencion.descripcion'
-                    ])
-                    ->from(DB::raw('(SELECT @row_num := 0) AS vars, solicitud'))
-                    ->orderBy($orderBy, $order);
+        $request = $this->request->all();
 
-        
-                if(isset($request['searchInput']) && trim($request['searchInput']) != ""){
-                    $query->where(
-                        function ($query) use ($request) {
-                            $query->orWhere('solicitud.nombre', 'like', '%'.trim($request['searchInput']).'%');
-                            $query->orWhere('solicitud.codigo', 'like', '%'.trim($request['searchInput']).'%');
-                        }
-                     );		
+        //return $request;
+        $columnsOrder = isset($request['order'][0]['column']) ? $request['order'][0]['column'] : '0';
+        $orderBy=isset($request['columns'][$columnsOrder]['data']) ? $request['columns'][$columnsOrder]['data'] : 'id';
+        $order = isset($request['order'][0]['dir']) ? $request['order'][0]['dir'] : 'ASC';
+        $length = isset($request['length']) ? $request['length'] : '15';
+
+        $currentPage = $request['currentPage'];  
+        Paginator::currentPageResolver(function() use ($currentPage){
+            return $currentPage;
+        });
+
+        $query = DB::table('solicitud')
+                ->leftJoin('departamento', 'departamento.id', '=', 'solicitud.departamentoId')
+                ->leftJoin('tipoatencion', 'tipoatencion.id', '=', 'solicitud.IdTipoAtencion')
+                ->select(
+                    'solicitud.id',
+                    'solicitud.codigo',
+                    // 'solicitud.nombre as nombre_solicitud',
+                    'solicitud.estatus',
+                    'tipoatencion.descripcion as tipoatencion_descripcion',
+                    'departamento.nombre as departamento_nombre'
+                )
+                ->orderBy("solicitud.$orderBy", $order);
+
+
+        if(isset($request['searchInput']) && trim($request['searchInput']) != ""){
+            $query->where(
+                function ($query) use ($request) {
+                    $query->orWhere('solicitud.nombre', 'like', '%'.trim($request['searchInput']).'%');
+                    $query->orWhere('solicitud.codigo', 'like', '%'.trim($request['searchInput']).'%');
                 }
-                   
-                $solicitud = $query->paginate($length); 
-            
-                $result = $solicitud->toArray();
-                $data = array();
-                foreach($result['data'] as $value){
+            );		
+        }
         
-                    if($value->estatus == 'Activo'){
-                        $detalle = '<a href="/dist/solicitud/mostrar/'.$value->id.'" class="btn btn-icon waves-effect waves-light bg-warning text-white m-b-5"> <i class="bi bi-eye"></i> </a>
-                                        <a href="/dist/solicitud/editar/'.$value->id.'" class="btn btn-icon waves-effect waves-light bg-secondary text-white m-b-5"> <i class="bi bi-pencil"></i> </a>
-                                        <a href="#" attr-id="'.$value->id.'" class="btn btn-icon waves-effect waves-light bg-danger text-white m-b-5 desactivar"> <i class="bi bi-trash"></i> </a>';
-                    }else{
-                        $detalle = '<a href="/dist/solicitud/mostrar/'.$value->id.'" class="btn btn-icon waves-effect waves-light bg-warning text-white m-b-5"> <i class="bi bi-eye"></i> </a>
-                                        <a href="/dist/solicitud/editar/'.$value->id.'" class="btn btn-icon waves-effect waves-light bg-secondary text-white m-b-5"> <i class="bi bi-pencil"></i> </a>
-                                        <a href="#" attr-id="'.$value->id.'" class="btn btn-icon waves-effect waves-light bg-primary text-white m-b-5 desactivar"> <i class="bi bi-check2-square"></i> </a>';
-                    }
-        
-                    $data[] = array(
-                          "DT_RowId" => $value->row_number,
-                          "id" => $value->id,
-                          "TipoAtencion"=> $value->descripcion,
-                          "codigo"=> $value->codigo,
-                          "departamento"=> $value->nombre,
-                          "estatus"=> $value->estatus,
-                          "detalle"=> $detalle
-                    );
-                }
-        
-                $response = array(
-                        'draw' => isset($request['draw']) ? $request['draw'] : '1',
-                        'recordsTotal' => $result['total'],
-                        'recordsFiltered' => $result['total'],
-                        'data' => $data,
-                    );
-                return response()
-                      ->json($response);
-        
-        
+        $solicitud = $query->paginate($length); 
+    
+        $result = $solicitud->toArray();
+        $data = array();
+        foreach($result['data'] as $value){
+
+            if($value->estatus == 'Activo'){
+                $detalle = '<a href="/dist/solicitud/mostrar/'.$value->id.'" class="btn btn-icon waves-effect waves-light bg-warning text-white m-b-5"> <i class="bi bi-eye"></i> </a>
+                                <a href="/dist/solicitud/editar/'.$value->id.'" class="btn btn-icon waves-effect waves-light bg-secondary text-white m-b-5"> <i class="bi bi-pencil"></i> </a>
+                                <a href="#" attr-id="'.$value->id.'" class="btn btn-icon waves-effect waves-light bg-danger text-white m-b-5 desactivar"> <i class="bi bi-trash"></i> </a>';
+            }else{
+                $detalle = '<a href="/dist/solicitud/mostrar/'.$value->id.'" class="btn btn-icon waves-effect waves-light bg-warning text-white m-b-5"> <i class="bi bi-eye"></i> </a>
+                                <a href="/dist/solicitud/editar/'.$value->id.'" class="btn btn-icon waves-effect waves-light bg-secondary text-white m-b-5"> <i class="bi bi-pencil"></i> </a>
+                                <a href="#" attr-id="'.$value->id.'" class="btn btn-icon waves-effect waves-light bg-primary text-white m-b-5 desactivar"> <i class="bi bi-check2-square"></i> </a>';
             }
+
+            $data[] = array(
+                "DT_RowId" => $value->id,
+                "id" => $value->id,
+                "TipoAtencion"=> $value->tipoatencion_descripcion,
+                "codigo"=> $value->codigo,
+                "departamento"=> $value->departamento_nombre,
+                "estatus"=> $value->estatus,
+                "detalle"=> $detalle
+            );
+        }
+
+        $response = array(
+                'draw' => isset($request['draw']) ? $request['draw'] : '1',
+                'recordsTotal' => $result['total'],
+                'recordsFiltered' => $result['total'],
+                'data' => $data,
+            );
+        return response()
+            ->json($response);
+
+
+    }
 
             public function Missolicitudes(){
         
       
-                return \view('dist/solicitud/missolicitudes');
+                // return \view('dist/solicitud/missolicitudes');
+                return view('dist.solicitud.missolicitudes');
         
             }
 

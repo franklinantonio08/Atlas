@@ -1,5 +1,15 @@
 class Distsolicitud {
     constructor() {
+
+        this.desde = '2024-01-01';
+        this.hasta = moment().subtract(0, 'days').format('YYY-MM-DD');
+
+        var date = new Date();
+        var year1 = new Date();
+        var year1 = year1.getFullYear() + 1;
+        var field = year1.toString()+ '-' + (date.getMonth() + 1).toString().padStart(2, 0) + '-' + date.getDate().toString().padStart(2, 0);
+
+        this.hasta = field;
     }
 
     init(){
@@ -74,6 +84,57 @@ class Distsolicitud {
           }
           event.stopPropagation();
       });
+
+       $('#reportrange span').html(this.desde + ' - ' + this.hasta);
+
+        $('#reportrange').daterangepicker({
+              format: 'DD-MM-YYYY',
+              startDate: '01/01/2020',
+              endDate: moment(),
+              minDate: '01/01/2020',
+              maxDate: moment().add(3, 'year').endOf('month'),
+              showDropdowns: true,
+              showWeekNumbers: true,
+              timePicker: false,
+              timePickerIncrement: 1,
+              timePicker12Hour: true,
+              ranges: {
+                  'Hoy': [moment(), moment()],
+                  'Ayer': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                  'Últimos 7 días': [moment().subtract(6, 'days'), moment()],
+                  'Últimos 30 días': [moment().subtract(29, 'days'), moment()],
+                  'Este Mes': [moment().startOf('month'), moment().endOf('month')],
+                  'Mes pasado': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')],
+                  'Todos': ['01/01/2020', moment()]
+              },
+              opens: 'right',
+              drops: 'down',
+              buttonClasses: ['btn', 'btn-sm'],
+              applyClass: 'btn-success',
+              cancelClass: 'btn-default',
+              separator: ' to ',
+              locale: {
+                  applyLabel: 'Enviar',
+                  cancelLabel: 'Cancelar',
+                  fromLabel: 'Desde',
+                  toLabel: 'Hasta',
+                  customRangeLabel: 'Personalizar',
+                  daysOfWeek: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
+                  monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Augosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+                  firstDay: 1
+              }
+        }, function (start, end, label) {
+             // console.log(start.format('DD-MM-YYYY'), end.format('DD-MM-YYYY'));
+              
+              _this.desde = start.format('YYYY-MM-DD');
+              _this.hasta = end.format('YYYY-MM-DD');
+
+              _this.solicitud();
+              
+              $('#reportrange span').html(start.format('YYYY-MM-DD') + ' - ' + end.format('YYYY-MM-DD'));
+              $('#reporte_fecha_titulo span').html(' Desde ' + start.format('YYYY-MM-DD') + ' - Hasta ' + end.format('YYYY-MM-DD'));
+                            
+        }); 
     
     }
 
@@ -224,6 +285,7 @@ class Distsolicitud {
                   "destroy": true,
                   "searching": false,
                   "serverSide": true,
+                  "autoWidth": false,
                   "info": true,
                   "lengthMenu": objComun.lengthMenuDataTable,
                   "pageLength": pageLengthDataTable, //Variable global en el layout
@@ -258,7 +320,7 @@ class Distsolicitud {
                       { "data": "TipoAtencion"},
                       { "data": "codigo" },
                       { "data": "estatus" },
-                      { "data": "detalle" , "orderable": false, className: "actions text-right"},
+                      { "data": "detalle" , "orderable": false, className: "actions text-end"},
                   ],
                   "initComplete": function (settings, json) {
 

@@ -74,6 +74,7 @@ class Distposiciones {
                   "destroy": true,
                   "searching": false,
                   "serverSide": true,
+                  "autoWidth": false,
                   "info": true,
                   "lengthMenu": objComun.lengthMenuDataTable,
                   "pageLength": pageLengthDataTable, //Variable global en el layout
@@ -108,7 +109,7 @@ class Distposiciones {
                       { "data": "departamento" },
                       { "data": "codigo" },
                       { "data": "estatus" },
-                      { "data": "detalle" , "orderable": false, className: "actions text-right"},
+                      { "data": "detalle" , "orderable": false, className: "actions text-end"},
                   ],
                   "initComplete": function (settings, json) {
 

@@ -78,6 +78,7 @@ class Distdepartamento {
                   "destroy": true,
                   "searching": false,
                   "serverSide": true,
+                  "autoWidth": false,
                   "info": true,
                   "lengthMenu": objComun.lengthMenuDataTable,
                   "pageLength": pageLengthDataTable, //Variable global en el layout
@@ -111,7 +112,7 @@ class Distdepartamento {
                       { "data": "nombre" },
                       { "data": "codigo" },
                       { "data": "estatus" },
-                      { "data": "detalle" , "orderable": false, className: "actions text-right"},
+                      { "data": "detalle" , "orderable": false, className: "actions text-end"},
                   ],
                   "initComplete": function (settings, json) {
 

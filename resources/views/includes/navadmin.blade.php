@@ -11,136 +11,212 @@
                 </div>
                 <ul class="sidebar-nav" data-coreui="navigation" data-simplebar="">
                 
-                <li class="nav-item"><a class="nav-link" href="/dist/dashboard">
-                        <svg class="nav-icon">
+                   <li class="nav-group modern-nav-group">
+                        <a class="nav-link nav-group-toggle" href="#">
+                        <svg class="nav-icon modern-nav-icon" style="color: #0D6EFD;">
                                 <use xlink:href="{{ asset('../vendors/@coreui/icons/svg/free.svg#cil-speedometer') }}"></use>
-                        </svg> Dashboard<!--<span class="badge bg-primary-gradient ms-auto">NEW</span> --></a>
-                </li>
+                        </svg>
+                        <span class="nav-text">Dashboard</span>
+                        </a>
+
+                        <ul class="nav-group-items ms-4">
+                        <li class="nav-item">
+                                <a class="nav-link d-flex align-items-center" href="/dist/dashboard">
+                                <svg class="nav-icon me-0" width="20" height="20" style="color: #1aa053;">
+                                        <use xlink:href="{{ asset('../vendors/@coreui/icons/svg/free.svg#cil-people') }}"></use>
+                                </svg>
+                                <span class="nav-text">Atención</span>
+                                </a>
+                        </li>
+                </ul>
+
+
                 
                 <!--<li class="nav-title">Modulos</li> -->
         
-                <li class="nav-group"><a class="nav-link nav-group-toggle" href="#">
-                        <svg class="nav-icon">
-                                <use xlink:href="{{ asset('../vendors/@coreui/icons/svg/free.svg#cil-industry') }}"></use>
-                        </svg> Solicitudes</a>
-                        <ul class="nav-group-items">
-                                <li class="nav-item"><a class="nav-link" href="/dist/solicitud/nuevo"><span class="nav-icon"></span> Crear Solicitud</a></li> 
-                                <li class="nav-item"><a class="nav-link" href="/dist/missolicitudes/{{ Auth::id() }}"><span class="nav-icon"></span> Mis Solicitudes</a></li> 
-                                <li class="nav-item"><a class="nav-link" href="/dist/solicitud"><span class="nav-icon"></span> Solicitud</a></li> 
-                               
-                        </ul>
-                </li>
+
+                        <li class="nav-group modern-nav-group">
+                                <a class="nav-link nav-group-toggle" href="#">                                
+                                <svg class="nav-icon modern-nav-icon" style="color: #796cf3;">
+                                        <use xlink:href="{{ asset('../vendors/@coreui/icons/svg/free.svg#cil-contact') }}"></use>
+                                </svg> 
+                                <span class="nav-text">Solicitudes</span> 
+                                </a>
+
+                                <ul class="nav-group-items ms-4">
+
+                                        <li class="nav-item">
+                                        <a class="nav-link d-flex align-items-center" href="/dist/solicitud/nuevo">
+                                                <svg class="nav-icon me-0" width="20" height="20" style="color: #e05555;">
+                                                <use xlink:href="{{ asset('../vendors/@coreui/icons/svg/free.svg#cil-plus') }}"></use>
+                                                </svg>
+                                                <span class="nav-text">Crear Solicitud</span>
+                                        </a>
+                                        </li>
+
+
+
+                                        <li class="nav-item">
+                                        <a class="nav-link d-flex align-items-center" href="/dist/missolicitudes/{{ Auth::id() }}">
+                                                <svg class="nav-icon me-0" width="20" height="20" style="color: #ffc107;">
+                                                <use xlink:href="{{ asset('../vendors/@coreui/icons/svg/free.svg#cil-user') }}"></use>
+                                                </svg>
+                                                <span class="nav-text">Mis Solicitudes</span>
+                                        </a>
+                                        </li>
+
+
+
+                                        <li class="nav-item">
+                                        <a class="nav-link d-flex align-items-center" href="/dist/solicitud">
+                                                <svg class="nav-icon me-0" width="20" height="20" style="color: #17a2b8;">
+                                                <use xlink:href="{{ asset('../vendors/@coreui/icons/svg/free.svg#cil-list-rich') }}"></use>
+                                                </svg>
+                                                <span class="nav-text">Todas</span>
+                                        </a>
+                                        </li>
+                        
+                                </ul>
+                        </li>
+
+
+
         
-                <li class="nav-group"><a class="nav-link nav-group-toggle" href="#">
-                        <svg class="nav-icon">
-                                <use xlink:href="{{ asset('../vendors/@coreui/icons/svg/free.svg#cil-comment-bubble') }}"></use>
-                        </svg> Colaboradores</a>
-                        <ul class="nav-group-items">
-                                <li class="nav-item"><a class="nav-link" href="/dist/colaboradores"> Colaboradores</a></li>
-                                {{-- <li class="nav-item"><a class="nav-link" href="/dist/colaboradores"> Accion Disciplinaria</a></li>
-                                <li class="nav-item"><a class="nav-link" href="/dist/colaboradores"> Colaboradores Inactivos</a></li> --}}
-                        </ul>
-                </li>
-        <!--
-                <li class="nav-group"><a class="nav-link nav-group-toggle" href="#">
-                        <svg class="nav-icon">
-                                <use xlink:href="{{ asset('../vendors/@coreui/icons/svg/free.svg#cil-cash') }}"></use>
-                        </svg> Asistencia</a>
-                        <ul class="nav-group-items">
-                                <li class="nav-item"><a class="nav-link" href="/dist/generales"><span class="nav-icon"></span> Lista de Asistencia</a></li>                        
-                                <li class="nav-item"><a class="nav-link" href="/dist/secundaria"><span class="nav-icon"></span> Agregar Asistencia</a></li>
-                                <li class="nav-item"><a class="nav-link" href="/dist/especifica"><span class="nav-icon"></span> Reporte de Asistencia</a></li>
-                               
+
+                        <li class="nav-group modern-nav-group">
+                                <a class="nav-link nav-group-toggle" href="#">
+                                <svg class="nav-icon modern-nav-icon" style="color: #0dcaf0;">
+                                        <use xlink:href="{{ asset('../vendors/@coreui/icons/svg/free.svg#cil-comment-bubble') }}"></use>
+                                </svg>
+                                <span class="nav-text">Colaboradores</span>
+                                </a>
+
+                                <ul class="nav-group-items ms-4">
+
+
+                                        <li class="nav-item">
+                                        <a class="nav-link d-flex align-items-center" href="/dist/colaboradores">
+                                                <svg class="nav-icon me-0" width="20" height="20" style="color: #198754;">
+                                                <use xlink:href="{{ asset('../vendors/@coreui/icons/svg/free.svg#cil-people') }}"></use>
+                                                </svg>
+                                                <span class="nav-text">Colaboradores</span>
+                                        </a>
+                                        </li>
+
+
+
+                                        <li class="nav-item">
+                                        <a class="nav-link d-flex align-items-center" href="/dist/colaboradores/disciplinaria">
+                                                <svg class="nav-icon me-0" width="20" height="20" style="color: #dc3545;">
+                                                <use xlink:href="{{ asset('../vendors/@coreui/icons/svg/free.svg#cil-warning') }}"></use>
+                                                </svg>
+                                                <span class="nav-text">Acción Disciplinaria</span>
+                                        </a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                        <a class="nav-link d-flex align-items-center" href="/dist/colaboradores/inactivos">
+                                                <svg class="nav-icon me-0" width="20" height="20" style="color: #6c757d;">
+                                                <use xlink:href="{{ asset('../vendors/@coreui/icons/svg/free.svg#cil-ban') }}"></use>
+                                                </svg>
+                                                <span class="nav-text">Inactivos</span>
+                                        </a>
+                                        </li>
                                 
-                        </ul>
-                </li>
-                
-                   
-                <li class="nav-group"><a class="nav-link nav-group-toggle" href="#">
-                        <svg class="nav-icon">
-                                <use xlink:href="{{ asset('../vendors/@coreui/icons/svg/free.svg#cil-cash') }}"></use>
-                        </svg> Asiento</a>
-                        <ul class="nav-group-items">
-                                <li class="nav-item"><a class="nav-link" href="/dist/asiento"><span class="nav-icon"></span> Asiento</a></li>
-                                <li class="nav-item"><a class="nav-link" href="base/breadcrumb.html"><span class="nav-icon"></span> Grupo</a></li>
-                                <li class="nav-item"><a class="nav-link" href="base/cards.html"><span class="nav-icon"></span> Cuenta</a></li>
-                                <li class="nav-item"><a class="nav-link" href="base/carousel.html"><span class="nav-icon"></span> Subcuenta</a></li>
-                        </ul>
-                </li>
-                
-                <li class="nav-group"><a class="nav-link nav-group-toggle" href="#">
-                        <svg class="nav-icon">
-                                <use xlink:href="{{ asset('../vendors/@coreui/icons/svg/free.svg#cil-industry') }}"></use>
-                        </svg> Permisos</a>
-                        <ul class="nav-group-items">
-                                <li class="nav-item"><a class="nav-link" href="/dist/compania"><span class="nav-icon"></span> Dias Feriados</a></li>
-                                <li class="nav-item"><a class="nav-link" href="/dist/compania"><span class="nav-icon"></span> Tipos de Permisos</a></li>
-                                <li class="nav-item"><a class="nav-link" href="/dist/compania"><span class="nav-icon"></span> Agregar Permisos</a></li>
-                                <li class="nav-item"><a class="nav-link" href="/dist/compania"><span class="nav-icon"></span> Tiempo Compensatorio</a></li>
-                                <li class="nav-item"><a class="nav-link" href="/dist/compania"><span class="nav-icon"></span> Reporte de Permisos</a></li>
-                        </ul>
-                </li>
+
+                                </ul>
+                        </li>
+
         
-                
-                <li class="nav-group"><a class="nav-link nav-group-toggle" href="#">
-                        <svg class="nav-icon">
-                                <use xlink:href="{{ asset('../vendors/@coreui/icons/svg/free.svg#cil-address-book') }}"></use>
-                        </svg> Clientes</a>
-                        <ul class="nav-group-items">
-                                <li class="nav-item"><a class="nav-link" href="/dist/cliente"> Clientes</a></li>
-                        </ul>
-                </li> 
-        
-                <li class="nav-group"><a class="nav-link nav-group-toggle" href="#">
-                        <svg class="nav-icon">
-                                <use xlink:href="{{ asset('../vendors/@coreui/icons/svg/free.svg#cil-group') }}"></use>
-                        </svg> Prestamo</a>
-                        <ul class="nav-group-items">
-                                <li class="nav-item"><a class="nav-link" href="/dist/usuarios"> Prestamos<span class="badge bg-success ms-auto">Free</span></a></li>
-                                <li class="nav-item"><a class="nav-link" href="/dist/usuarios"> Cuota de Prestamo<span class="badge bg-success ms-auto">Free</span></a></li>
-                        </ul>
-                </li>
-        
-                <li class="nav-group"><a class="nav-link nav-group-toggle" href="#">
-                        <svg class="nav-icon">
+                        <li class="nav-group modern-nav-group">
+                        <a class="nav-link nav-group-toggle" href="#">
+                                <svg class="nav-icon modern-nav-icon" style="color: #20c997;">
                                 <use xlink:href="{{ asset('../vendors/@coreui/icons/svg/free.svg#cil-chart-line') }}"></use>
-                        </svg> Proyectos</a>
-                        <ul class="nav-group-items">
-                                <li class="nav-item"><a class="nav-link" href="notifications/alerts.html"><span class="nav-icon"></span> Proyectos</a></li>
-                                <li class="nav-item"><a class="nav-link" href="notifications/badge.html"><span class="nav-icon"></span> Lista de Tareas</a></li>
-                                <li class="nav-item"><a class="nav-link" href="notifications/badge.html"><span class="nav-icon"></span> Visitas de Campo</a></li>
+                                </svg>
+                                <span class="nav-text">Reportes</span>
+                        </a>
+
+                        <ul class="nav-group-items ms-4">
+                             
+                                <li class="nav-item">
+                                <a class="nav-link d-flex align-items-center" href="/dist/reporte/atencion">
+                                        <svg class="nav-icon me-0" width="20" height="20" style="color: #20c997;">
+                                        <use xlink:href="{{ asset('../vendors/@coreui/icons/svg/free.svg#cil-file') }}"></use>
+                                        </svg>
+                                        <span class="nav-text">Generales</span>
+                                </a>
+                                </li>
+                             
                         </ul>
-                </li> -->
+                        </li>
         
-                <li class="nav-group"><a class="nav-link nav-group-toggle" href="#">
-                        <svg class="nav-icon">
-                                <use xlink:href="{{ asset('../vendors/@coreui/icons/svg/free.svg#cil-chart-line') }}"></use>
-                        </svg> Reportes</a>
-                        <ul class="nav-group-items">
-                                <li class="nav-item"><a class="nav-link" href="../dashboard"><span class="nav-icon"></span> Reportes Generales</a></li>
-                                {{-- <li class="nav-item"><a class="nav-link" href="notifications/badge.html"><span class="nav-icon"></span> Lista de Activos</a></li>
-                                <li class="nav-item"><a class="nav-link" href="notifications/badge.html"><span class="nav-icon"></span> Logistica</a></li> --}}
+                <li class="nav-group modern-nav-group">
+                        <a class="nav-link nav-group-toggle" href="#">
+                                <svg class="nav-icon modern-nav-icon" style="color: #6f42c1;">
+                                <use xlink:href="{{ asset('../vendors/@coreui/icons/svg/free.svg#cil-settings') }}"></use>
+                                </svg>
+                                <span class="nav-text">Configuración</span>
+                        </a>
+
+                        <ul class="nav-group-items ms-4">
+
+
+                                <li class="nav-item">
+                                <a class="nav-link d-flex align-items-center" href="/dist/departamento">
+                                        <svg class="nav-icon me-0" width="20" height="20" style="color: #198754;">
+                                        <use xlink:href="{{ asset('../vendors/@coreui/icons/svg/free.svg#cil-building') }}"></use>
+                                        </svg>
+                                        <span class="nav-text">Departamento</span>
+                                </a>
+                                </li>
+
+
+
+                                <li class="nav-item">
+                                <a class="nav-link d-flex align-items-center" href="/dist/tipoatencion">
+                                        <svg class="nav-icon me-0" width="20" height="20" style="color: #0d6efd;">
+                                        <use xlink:href="{{ asset('../vendors/@coreui/icons/svg/free.svg#cil-list-rich') }}"></use>
+                                        </svg>
+                                        <span class="nav-text">Tipo Atención</span>
+                                </a>
+                                </li>
+
+
+
+                                <li class="nav-item">
+                                <a class="nav-link d-flex align-items-center" href="/dist/posiciones">
+                                        <svg class="nav-icon me-0" width="20" height="20" style="color: #fd7e14;">
+                                        <use xlink:href="{{ asset('../vendors/@coreui/icons/svg/free.svg#cil-briefcase') }}"></use>
+                                        </svg>
+                                        <span class="nav-text">Posiciones</span>
+                                </a>
+                                </li>
+
+
+
+                                <li class="nav-item">
+                                <a class="nav-link d-flex align-items-center" href="/dist/motivo">
+                                        <svg class="nav-icon me-0" width="20" height="20" style="color: #dc3545;">
+                                        <use xlink:href="{{ asset('../vendors/@coreui/icons/svg/free.svg#cil-lightbulb') }}"></use>
+                                        </svg>
+                                        <span class="nav-text">Motivo</span>
+                                </a>
+                                </li>
+
+
+
+                                <li class="nav-item">
+                                <a class="nav-link d-flex align-items-center" href="/dist/submotivo">
+                                        <svg class="nav-icon me-0" width="20" height="20" style="color: #6610f2;">
+                                        <use xlink:href="{{ asset('../vendors/@coreui/icons/svg/free.svg#cil-puzzle') }}"></use>
+                                        </svg>
+                                        <span class="nav-text">Submotivo</span>
+                                </a>
+                                </li>
+
+
                         </ul>
-                </li>
-        
-                <li class="nav-group"><a class="nav-link nav-group-toggle" href="#">
-                        <svg class="nav-icon">
-                                <use xlink:href="{{ asset('../vendors/@coreui/icons/svg/free.svg#cil-speedometer') }}"></use>
-                        </svg> Configuracion</a>
-                        <ul class="nav-group-items">
-                                <!--<li class="nav-item"><a class="nav-link" href="notifications/alerts.html"><span class="nav-icon"></span> Lista de Planilla</a></li>
-                                <li class="nav-item"><a class="nav-link" href="notifications/badge.html"><span class="nav-icon"></span> Generar Comprobante</a></li>
-                                <li class="nav-item"><a class="nav-link" href="notifications/badge.html"><span class="nav-icon"></span> Reporte de Planilla</a></li>-->
-        
-                                <li class="nav-item"><a class="nav-link" href="/dist/departamento"><span class="nav-icon"></span> Departamento</a></li>
-                                <li class="nav-item"><a class="nav-link" href="/dist/tipoatencion"><span class="nav-icon"></span> Tipo Atencion</a></li>
-                                <li class="nav-item"><a class="nav-link" href="/dist/posiciones"><span class="nav-icon"></span> Posiciones</a></li>
-                                <li class="nav-item"><a class="nav-link" href="/dist/motivo"><span class="nav-icon"></span> Motivo</a></li>
-                                <li class="nav-item"><a class="nav-link" href="/dist/submotivo"><span class="nav-icon"></span> SubMotivo</a></li>
-                                {{-- <li class="nav-item"><a class="nav-link" href="/dist/cubiculo"><span class="nav-icon"></span> Cubiculos</a></li> --}}
-              
-                        </ul>
-                </li>
+                        </li>
         
                 <!--<li class="nav-item"><a class="nav-link" href="/dashboard">
                         <svg class="nav-icon">

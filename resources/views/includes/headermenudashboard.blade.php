@@ -1,15 +1,8 @@
 <div class="wrapper d-flex flex-column min-vh-100 bg-light bg-opacity-50 dark:bg-transparent">
-    <header class="header header-sticky mb-4" style="padding: 50px; font-size: 24px; background-color: #001936; color: white;"> <!-- Ajusta el tamaño como desees -->
-        <div class="container-fluid">
-            <button class="header-toggler px-md-0 me-md-3 d-md-none" type="button" onclick="coreui.Sidebar.getInstance(document.querySelector('#sidebar')).toggle()">
-                <svg class="icon icon-lg">
-                    <use xlink:href="{{ asset('../vendors/@coreui/icons/svg/free.svg#cil-menu') }}"></use>
-                </svg>
-            </button>
-            <a class="header-brand d-md-none" href="#">
-                <svg width="118" height="46" alt="CoreUI Logo">
-                    <use xlink:href="{{ asset('brand/coreui.svg#full') }}"></use>
-                </svg>
-            </a>
+    <header class="header header-sticky mb-4" style="padding: 30px; font-size: 32px; background-color: #001936; color: white;">
+        <div class="container-fluid d-flex justify-content-center align-items-center">
+            <div class="text-center w-100 fw-bold text-uppercase" style="letter-spacing: 1px;">
+                Sistema de Turnos - Atención al Público
+            </div>
         </div>
     </header>
