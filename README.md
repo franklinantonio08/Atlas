@@ -8,7 +8,7 @@ git clone https://github.com/franklinantonio08/Atlas.git
 git clone https://franklinantonio08:@github.com/franklinantonio08/Atlas.git
 
 <!-- set el remote para hacerle pull al git -->
-git remote set-url origin https://franklinantonio08:@github.com/franklinantonio08/Apolo.git
+git remote set-url origin https://franklinantonio08:@github.com/franklinantonio08/Atlas.git
 
 <!-- Esto de hace  para poner el global del github -->
 composer config --global --auth github-oauth.github.com 
@@ -25,10 +25,10 @@ chmod 600 .env
 chown apache:apache .env  
 
  <!-- Crea Carpetas Publicas*/ -->
-mkdir -p /var/www/html/Atlas/storage/app/public/export_temp
+<!-- mkdir -p /var/www/html/Atlas/storage/app/public/export_temp
 mkdir -p /var/www/html/Atlas/storage/app/public/infractores
 mkdir -p /var/www/html/Atlas/storage/app/public/movimientos
-mkdir -p /var/www/html/Atlas/storage/app/public/multas
+mkdir -p /var/www/html/Atlas/storage/app/public/multas -->
 
 
  <!-- Permisos al storage*/ -->
@@ -57,8 +57,8 @@ use atlas;
 DROP DATABASE atlas;
 
  <!-- ejecuta scrits guardados en carpeta database  -->
-source /var/www/html/Atlas/database/atlas_ofi_f.sql;
-source /var/www/html/Atlas/database/actualizaciones.sql;
+source /var/www/html/Atlas/database/atlas.sql;
+<!-- source /var/www/html/Atlas/database/actualizaciones.sql; -->
 
  <!-- entra a la db  -->
 use atlas;

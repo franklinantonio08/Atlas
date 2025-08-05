@@ -46,6 +46,14 @@ class AuthenticatedSessionController extends Controller
             $password = $request->input('password');
         
             if ($tipoUsuario === 'ad') {
+
+                try {
+                    Ldap::getConnection()->connect(); // <--- ESTO ES CLAVE
+                } catch (\Exception $e) {
+                    \Log::error('Error conectando a LDAP: ' . $e->getMessage());
+                    return back()->withErrors(['username' => 'No se pudo establecer conexión con el servidor LDAP.']);
+                }
+                
                 // Autenticación AD
                 $ldap = UserLdap::where('samaccountname', $username)->first();
                 
